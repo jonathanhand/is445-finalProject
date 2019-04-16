@@ -27,3 +27,6 @@ body { background: #ECEFF1;
   body, #message { margin-top: 0; background: white; box-shadow: none; }
   body { border-top: 16px solid #ffa100; }
 */
+.table1{
+    border: 1px solid black;
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -38,27 +39,30 @@
   <body>
     <div id="message">
       <h2>Contacts</h2>
-      <p id="paragraph1">Paragraphs</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+      <p id="paragraph1"></p>
+      <table class="tableOutline" id="table1">  
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+        </table>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-    <script>
-     var ref = firebase.database().ref();
 
-ref.on("value", function(snapshot) {
-   console.log(snapshot.val());
-   const data = snapshot.val();
-   for (i in data) {
-     //create ul list for each one? like two homeworks ago
-    document.getElementById("paragraph1").innerHTML = data[i].name + '</br>' + data[i].email + '</br>' +data[i].phone;
+    
 
-
-
-   }
-}, function (error) {
-   console.log("Error: " + error.code);
-});
-    </script>
-
+<form>
+    <fieldset>
+        <legend>New Contact:</legend>
+        Name:<br>
+        <input type="text" id="newName" value="Brad Smith"><br>
+        Email:<br>
+        <input type="text" id="newEmail" value="b.smith@example.com"><br>
+        Phone Number:<br>
+        <input type="text" id="newPhone" value="562-555-5555"><br><br>
+        <button type="button" id="myButton" onclick="createUser()">Submit</button>
+    </fieldset>
+</form>
+<script src="main.js"></script>
   </body>
 </html>
