@@ -1,6 +1,6 @@
 var ref = firebase.database().ref();
 var createRef = firebase.database().ref("Users/");
-ref.on(
+ref.once(
   "value",
   function(snapshot) {
     target = document.getElementById("table1");
@@ -34,12 +34,12 @@ function makeTable(dbData, target) {
 }
 
 function createUser() {
-  ref.on(
+  ref.once(
+    //once instead of on, which would keep loading
     "value",
     function(snapshot) {
       const data = snapshot.val().Users;
       var IDLength = Object.getOwnPropertyNames(data).length;
-      console.log(IDLength)
       writeData(IDLength);
     },
     function(error) {
@@ -49,11 +49,14 @@ function createUser() {
 }
 
 function writeData(newID) {
-  createRef.set({
-    newID: {
+  createRef.update({
+    //appends current db
+    [newID]: {
       Name: document.getElementById("newName").value,
       Email: document.getElementById("newEmail").value,
       Phone: document.getElementById("newPhone").value
     }
   });
+  console.log("user created");
+  location.reload(); //reloads the page after user added
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Users</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBVQ8-82VWidVHXZIbyP2gsAyPxL1CjDpo",
+        authDomain: "is445-finalproject.firebaseapp.com",
+        databaseURL: "https://is445-finalproject.firebaseio.com",
+        projectId: "is445-finalproject",
+        storageBucket: "is445-finalproject.appspot.com",
+        messagingSenderId: "672621886059"
+      };
+      firebase.initializeApp(config);
+    </script>
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Final Project</title>
+</head>
+<body>
+        <div class="topnav">
+                <a href="index.html">Home</a>
+                <a class="active" href="/view.html">View</a>
+                <a href="/create.html">Create User</a>
+                <a href="#about">About</a>
+              </div> 
+              <div id="message">
+                    <h2>Contacts</h2>
+                    <p id="paragraph1"></p>
+                    <table class="tableBorder" id="table1">  
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                      </tr>
+                      </table>
+                  </div>
+                  <script src="main.js"></script>
+
+</body>
+</html>
