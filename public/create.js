@@ -1,7 +1,5 @@
 var ref = firebase.database().ref();
 var createRef = firebase.database().ref("Users/");
-
-
 function createUser() {
   ref.once(
     //once instead of on, which would keep loading
@@ -26,6 +24,6 @@ function writeData(newID) {
       Phone: document.getElementById("newPhone").value
     }
   });
-  console.log("user created");
   location.reload(); //reloads the page after user added
+  console.log("user created");
 }
