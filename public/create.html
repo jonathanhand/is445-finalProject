@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create Users</title>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
     <script>
@@ -25,25 +27,28 @@
     <title>Final Project</title>
 </head>
 <body>
-     
+    <div class = "navBarWrapper">
         <div class="topnav">
-                <a href="/index.html">Home</a>
-                <a href="/view.html">View</a>
-                <a  class="active" href="/create.html">Create User</a>
-                <a href="#about">About</a>
+          <p>Contact Management</p>
+          <div><a href="/index.html"><i class="material-icons">menu</i>index </a></div>
+          <a class="active" href="/create.html"><i class="material-icons icon-white">add_box</i>new</a>
               </div> 
+              </div>
+              <!--type="reset" will clear form-->
         <form>
+          <div class="form">
                 <fieldset>
-                    <legend>New Contact:</legend>
+                    <legend><h2>New Contact</h2></legend>
                     Name:<br>
-                    <input type="text" id="newName" value="Brad Smith"><br>
+                    <input type="text" id="newName" value="Brad Smith" required><br>
                     Email:<br>
-                    <input type="text" id="newEmail" value="b.smith@example.com"><br>
+                    <input type="text" id="newEmail" value="b.smith@example.com" required><br>
                     Phone Number:<br>
                     <input type="text" id="newPhone" value="562-555-5555"><br><br>
-                    <button type="button" id="myButton" onclick="createUser()">Submit</button>
+                    <button type="button" id="myButton" onclick="createUser()" required>Submit</button>
                 </fieldset>
             </form>
+          </div>
             <script src="create.js"></script>
 
 </body>

@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Users</title>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
     <script>
       // Initialize Firebase
@@ -20,61 +24,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Final Project</title>
+</head>
 
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
- 
-      <div class="topnav">
-          <a class="active" href="/index.html">Home</a>
-          <a href="/view.html">View</a>
-          <a href="/create.html">Create User</a>
-          <a href="#about">About</a>
-        </div> 
-   <!--
-    <div id="message">
-      <h2>Contacts</h2>
-      <p id="paragraph1"></p>
-      <table class="tableBorder" id="table1">  
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-        </tr>
-        </table>
+  <div class = "navBarWrapper">
+    <div class="topnav">
+        <p>Contact Management</p>
+        <div><a class="active" href="/index.html"><i class="material-icons icon-white">menu</i>index </a></div>
+        <a href="/create.html"><i class="material-icons">add_box</i>new</a>
+      </div> 
     </div>
+    <body>
+      <div class="contactContainer">
+        <h1>Contact List</h1>
+              <div id="message">
+                    <table class="tableBorder" id="table1">  
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                      </tr>
+                      </table>
+                  </div>
+                  </div>
+                  <script src="main.js"></script>
 
-    
-
-<form>
-    <fieldset>
-        <legend>New Contact:</legend>
-        Name:<br>
-        <input type="text" id="newName" value="Brad Smith"><br>
-        Email:<br>
-        <input type="text" id="newEmail" value="b.smith@example.com"><br>
-        Phone Number:<br>
-        <input type="text" id="newPhone" value="562-555-5555"><br><br>
-        <button type="button" id="myButton" onclick="createUser()">Submit</button>
-    </fieldset>
-</form>
-<script src="main.js"></script>
--->
-  </body>
+</body>
 </html>
-
-<!-- ended here at 7:54. match UI to word doc. two pages, index and new-->

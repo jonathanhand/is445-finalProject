@@ -1,5 +1,15 @@
 var ref = firebase.database().ref();
 var createRef = firebase.database().ref("Users/");
+/*
+function createUser() {
+curl -X PUT -d '{
+  "alanisawesome": {
+    "name": "Alan Turing",
+    "birthday": "June 23, 1912"
+  }
+}' 'https://is445-finalproject.firebaseio.com/rest/saving-data/fireblog/users.json'
+}
+*/
 function createUser() {
   ref.once(
     //once instead of on, which would keep loading
