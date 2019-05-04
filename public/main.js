@@ -1,31 +1,52 @@
-
 var ref = firebase.database().ref();
 var createRef = firebase.database().ref("Users/");
 var editRef = firebase.database().ref("Edit/");
+var detailsRef = firebase.database().ref("Details/");
 
 var target = document.getElementById("table1");
 var snapshotDB;
 
 function getUserList() {
-return ref.once('value').then(function (snapshot) {
-  snapshotDB = snapshot.val().Users;
-}).then(function() {
-  printList();
-  
+  return ref
+    .once("value")
+    .then(function(snapshot) {
+      snapshotDB = snapshot.val().Users;
+    })
+    .then(function() {
+      printList();
+    });
+}
+
+function printList() {
+  for (var id in snapshotDB) {
+    makeTable(snapshotDB[id], target);
+    addEditBtn(id, target);
+    addDetailsBtn(id, target);
+    addDeleteBtn(id, target);
+  }
+}
+
+function addDetailsBtn(dataID, target) {
+  const detailsBtn = document.createElement("input");
+  detailsBtn.type = "button";
+  detailsBtn.className = "detailsBtn";
+  detailsBtn.value = "Details";
+  detailsBtn.setAttribute("details-id", dataID);
+  target.appendChild(detailsBtn);
+
+  detailsBtn.addEventListener("click", function(e) {
+    var selectedID = detailsBtn.getAttribute("details-id");
+    storeDetails(selectedID);
   });
 }
 
-function printList () {
-for (var id in snapshotDB) 
-{
-makeTable(snapshotDB[id], target);
-addEditBtn(id, target);
-addDeleteBtn(id, target);
+function storeDetails(selectedID) {
+  detailsRef.set({
+    //appends to stored edit id in db
+    ["detailID"]: selectedID
+  });
+  window.location.href = "/details.html";
 }
-}
-
-getUserList();
-//TODO: stopped 5/3 1145pm, need to add details and delete functions
 
 function addDeleteBtn(dataID, target) {
   const deleteBtn = document.createElement("input");
@@ -35,7 +56,6 @@ function addDeleteBtn(dataID, target) {
   deleteBtn.setAttribute("delete-id", dataID);
   target.appendChild(deleteBtn);
 
-  
   deleteBtn.addEventListener("click", function(e) {
     var returnedVal = getConfirmation();
     if (returnedVal == true) {
@@ -44,19 +64,22 @@ function addDeleteBtn(dataID, target) {
     }
   });
 }
-function deleteRecord (id) {
-  firebase.database().ref("Users/" + id).remove();
+function deleteRecord(id) {
+  firebase
+    .database()
+    .ref("Users/" + id)
+    .remove();
   alert("deleted");
   location.reload();
 }
 
 function getConfirmation() {
   var retVal = confirm("Do you want to continue ?");
-               if( retVal == true ) {
-                  return true;
-               } else {
-                  return false;
-               }
+  if (retVal == true) {
+    return true;
+  } else {
+    return false;
+  }
 }
 function addEditBtn(dataID, target) {
   const editBtn = document.createElement("input");
@@ -67,18 +90,17 @@ function addEditBtn(dataID, target) {
   target.appendChild(editBtn);
 
   editBtn.addEventListener("click", function(e) {
-var selectedID = editBtn.getAttribute("edit-id");
-storeEdit(selectedID);
+    var selectedID = editBtn.getAttribute("edit-id");
+    storeEdit(selectedID);
   });
 }
 
 function storeEdit(selectedID) {
   editRef.set({
     //appends to stored edit id in db
-    ['Edit']: selectedID
+    ["Edit"]: selectedID
   });
-  window.location.href="/edit.html";
-
+  window.location.href = "/edit.html";
 }
 
 //add listener for edit, sends to edit page where data prefilled out
@@ -91,7 +113,6 @@ function makeTable(dbData, target) {
   var tdNodeEmail = document.createElement("td");
   var tdNodePhone = document.createElement("td");
 
-
   tdNodeName.appendChild(tdName);
   tdNodeEmail.appendChild(tdEmail);
   tdNodePhone.appendChild(tdPhone);
@@ -102,8 +123,4 @@ function makeTable(dbData, target) {
   target.appendChild(trNode);
 }
 
-// function testFunc () {
-//   return selPer;
-// }
-
-// export const testFuncVar = testFunc();
+getUserList();
