@@ -20,11 +20,44 @@ for (var id in snapshotDB)
 {
 makeTable(snapshotDB[id], target);
 addEditBtn(id, target);
+addDeleteBtn(id, target);
 }
 }
 
 getUserList();
+//TODO: stopped 5/3 1145pm, need to add details and delete functions
 
+function addDeleteBtn(dataID, target) {
+  const deleteBtn = document.createElement("input");
+  deleteBtn.type = "button";
+  deleteBtn.className = "deleteBtn";
+  deleteBtn.value = "Delete";
+  deleteBtn.setAttribute("delete-id", dataID);
+  target.appendChild(deleteBtn);
+
+  
+  deleteBtn.addEventListener("click", function(e) {
+    var returnedVal = getConfirmation();
+    if (returnedVal == true) {
+      var selectedID = deleteBtn.getAttribute("delete-id");
+      deleteRecord(selectedID);
+    }
+  });
+}
+function deleteRecord (id) {
+  firebase.database().ref("Users/" + id).remove();
+  alert("deleted");
+  location.reload();
+}
+
+function getConfirmation() {
+  var retVal = confirm("Do you want to continue ?");
+               if( retVal == true ) {
+                  return true;
+               } else {
+                  return false;
+               }
+}
 function addEditBtn(dataID, target) {
   const editBtn = document.createElement("input");
   editBtn.type = "button";
